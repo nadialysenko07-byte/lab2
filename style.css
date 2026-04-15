@@ -5,6 +5,10 @@
 }
 
 /* 2. ЗАГАЛЬНІ НАЛАШТУВАННЯ */
+html {
+    scroll-behavior: smooth; /* Плавний скрол */
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -21,9 +25,51 @@ body {
     padding: 0 20px;
 }
 
-/* 3. ПЕРШИЙ БЛОК (ГЕРОЙ) */
+/* 3. ШАПКА ТА НАВІГАЦІЯ */
+.header {
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
+    border-bottom: 1px solid rgba(255, 230, 167, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: #FFE6A7;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #FFE6A7;
+}
+
+/* 4. ГЕРОЙ-БЛОК */
 .hero {
-    padding: 150px 0;
+    padding: 200px 0 150px 0; /* Збільшено відступ зверху через шапку */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('IMG/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -36,6 +82,7 @@ body {
     margin-bottom: 25px;
 }
 
+/* АНІМОВАНА КНОПКА */
 .btn-manager {
     background-color: #A52A2A; 
     color: white;
@@ -44,9 +91,16 @@ body {
     border-radius: 5px;
     font-weight: bold;
     display: inline-block;
+    transition: all 0.3s ease;
 }
 
-/* 4. БЛОК З КАРТКАМИ ТОВАРІВ */
+.btn-manager:hover {
+    background-color: #d23a3a;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 230, 167, 0.3);
+}
+
+/* 5. КАРТКИ ТОВАРІВ */
 .products-container {
     padding: 100px 0;
 }
@@ -64,6 +118,11 @@ body {
     border-radius: 15px;
     width: 350px;
     overflow: hidden; 
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 .card-img {
@@ -81,7 +140,7 @@ body {
     margin-top: 0;
 }
 
-/* 5. БЛОК МАЙСТРА (ФОН БУРШТИН ТА ФОТО В РАМЦІ) */
+/* 6. БЛОК МАЙСТРА */
 .master-section {
     padding: 120px 0;
     background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('IMG/footer-texture.jpg');
@@ -111,7 +170,7 @@ body {
     border: 3px solid #FFE6A7; 
 }
 
-/* 6. БЛОК АДРЕСИ (СВІТЛИЙ ФОН З КАРАМЕЛЬКАМИ) */
+/* 7. АДРЕСА */
 .address-section {
     padding: 120px 0;
     background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.7)), url('IMG/brand-candy.jpg');
@@ -137,7 +196,7 @@ body {
     margin: 15px 0;
 }
 
-/* 7. ФУТЕР */
+/* 8. ФУТЕР */
 .footer {
     padding: 60px 0;
     background-color: #050505;
@@ -146,4 +205,52 @@ body {
 .footer h3 {
     color: #FFE6A7;
     margin-bottom: 15px;
+}
+
+/* 9. МОБІЛЬНЕ МЕНЮ (БУРГЕР) ТА АДАПТИВКА */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #FFE6A7;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    /* Показуємо бургер */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Ховаємо звичайне меню і перетворюємо його на мобільне */
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 75px;
+        background: rgba(10, 10, 10, 0.98);
+        width: 100%;
+        height: 100vh;
+        transition: 0.4s;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding-top: 100px;
+        gap: 40px;
+    }
+
+    /* Адаптація блоків */
+    .hero h1 { font-size: 2.2rem; }
+    .master-grid { flex-direction: column; text-align: center; }
+    .master-info h2 { font-size: 2.2rem; }
 }

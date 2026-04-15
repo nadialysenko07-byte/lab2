@@ -8,6 +8,27 @@
 </head>
 <body>
 
+    <header class="header">
+        <div class="container nav-container">
+            <div class="logo">Lollypop</div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#">Головна</a></li>
+                    <li><a href="#products">Продукція</a></li>
+                    <li><a href="#master">Про майстра</a></li>
+                    <li><a href="#contacts">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <section class="hero">
         <div class="container">
             <h1>Майстерня крафтової карамелі «Lollypop»</h1>
@@ -16,7 +37,7 @@
         </div>
     </section>
 
-    <section class="products-container">
+    <section class="products-container" id="products">
         <div class="container">
             <div class="product-grid">
                 <div class="card">
@@ -44,7 +65,7 @@
         </div>
     </section>
 
-    <section class="master-section">
+    <section class="master-section" id="master">
         <div class="container master-grid">
             <div class="master-info">
                 <h2>Алхімік Карамелі: John Doe</h2>
@@ -57,7 +78,7 @@
         </div>
     </section>
 
-    <section class="address-section">
+    <section class="address-section" id="contacts">
         <div class="container">
             <div class="address-box">
                 <h3>Завітайте до нашої майстерні</h3>
@@ -77,6 +98,22 @@
             <p>&copy; 2026 Майстерня Крафтової Карамелі «Lollypop»</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('is-active');
+        });
+
+        // Закриття меню при кліку на пункт
+        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('is-active');
+        }));
+    </script>
 
 </body>
 </html>
